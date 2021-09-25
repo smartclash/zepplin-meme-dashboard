@@ -6,6 +6,6 @@ export default NextAuth({
         Google({
             clientId: process.env.GOOGLE_OAUTH_ID as string,
             clientSecret: process.env.GOOGLE_OAUTH_SECRET as string
-        })
+        }),
     ],
 })
