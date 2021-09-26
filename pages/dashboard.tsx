@@ -1,4 +1,5 @@
 import type { GetServerSideProps } from 'next';
+import { FormEvent, useRef, useState } from 'react';
 import { signOut, getSession } from 'next-auth/react';
 import deta, { User } from '../components/deta';
 import Meta from '../components/Meta';
@@ -9,6 +10,14 @@ interface DashboardProps {
 }
 
 const MemeForm = () => {
+    const [handle, setHandle] = useState("");
+    const [file, setFile] = useState<File>();
+
+    const handleFormSubmission = (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        console.log(handle, file?.name, file?.type);
+    }
+
     return (
         <section className="section">
             <div className="container">
@@ -19,17 +28,27 @@ const MemeForm = () => {
                         </p>
                     </div>
                     <div className="card-content">
-                        <form>
+                        <form onSubmit={handleFormSubmission}>
                             <div className="field">
                                 <label htmlFor="ighandle" className="label">Your IG handle</label>
                                 <div className="control">
-                                    <input type="text" className="input" name="ighandle" id="ighandle" placeholder="@myInstaHandle" required />
+                                    <input 
+                                        type="text" className="input" name="ighandle" 
+                                        id="ighandle" placeholder="@myInstaHandle" required 
+                                        onChange={e => setHandle(e.target.value)} />
                                 </div>
                             </div>
                             <div className="field">
                                 <label htmlFor="meme" className="button is-outlined is-fullwidth">Select your Meme</label>
                                 <div className="control">
-                                    <input type="file" className="button is-primary is-outlined is-sr-only" name="meme" id="meme" required />
+                                    <input 
+                                        type="file" name="meme" id="meme" required
+                                        className="button is-primary is-outlined is-sr-only" 
+                                        onChange={e => {
+                                            if (e.target.files?.length) {
+                                                setFile(e.target.files[0])
+                                            }
+                                        }} />
                                 </div>
                             </div>
                             <hr />
