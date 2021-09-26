@@ -13,7 +13,23 @@ interface DashboardProps {
     meme: GetResponse
 }
 
+const generateUserInformation = (user: User) => {
+    const emailPrefix = user.key.split('@')[0];
+    const year = emailPrefix.substring(0, 2);
+    const course = emailPrefix.match(/([a-z])+/g) || '';
+    const roll = emailPrefix.split(course[0])[1];
+
+    return {
+        roll,
+        year,
+        course: course[0],
+        prefix: emailPrefix
+    }
+}
+
 const Dashboard = ({ user }: DashboardProps) => {
+    const userInfo = generateUserInformation(user);
+
     return (
         <div>
             <Meta title="Dashboard" />
@@ -23,9 +39,22 @@ const Dashboard = ({ user }: DashboardProps) => {
                 <div className="column is-8 is-offset-2">
                     <section className="section">
                         <div className="container">
-                            <h1 className="is-size-3 is-capitalized">
-                                Welcome, {user.name.toLocaleLowerCase()} - <a onClick={() => signOut()}>Logout</a>
-                            </h1>
+                            <div className="card">
+                                <div className="card-content">
+                                    <div className="content">
+                                        <h3 className="is-capitalized">
+                                            Welcome, {user.name.toLocaleLowerCase()}
+                                        </h3>
+                                        <p>Department: {userInfo.course.toLocaleUpperCase()}</p>
+                                        <p>Joining year: {'20' + userInfo.year}</p>
+                                        <p>Roll Number: {userInfo.prefix.toLocaleUpperCase()}</p>
+                                    </div>
+                                    
+                                </div>
+                                <div className="card-footer">
+                                    <a onClick={() => signOut()} className="card-footer-item">Logout</a>
+                                </div>
+                            </div>
                         </div>
                     </section>
                     {user.completed ? <SubmitedMeme /> : <MemeForm />}
