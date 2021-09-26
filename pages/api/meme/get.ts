@@ -5,14 +5,14 @@ import deta from "../../../components/deta";
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const session = await getSession({ req });
     if (!session) {
-        return res.status(404);
+        return res.status(404).send('');
     }
 
     const db = deta.Base('users');
     const user = await db.get(session.user?.email as string);
 
     if (user && !user.completed) {
-        return res.status(404);
+        return res.status(404).send('');
     }
 
     const drive = deta.Drive('memes');

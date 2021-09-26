@@ -27,10 +27,7 @@ const handler = async (
     const form = formidable({ multiples: false });
     form.parse(req, async (err, fields, files) => {
         if (err) {
-            return res.status(500).json({
-                type: 'ERROR',
-                message: 'Could not upload meme'
-            });
+            return res.redirect('/dashboard?type=error&message=' + encodeURIComponent("Could not upload meme"));
         }
 
         const igHandle = fields.ighandle as string;
@@ -42,7 +39,7 @@ const handler = async (
         }, session?.user?.email as string);
 
         if (!meme.type?.startsWith('image')) {
-            return res.redirect('/dashboard');
+            return res.redirect('/dashboard?type=error&message=' + encodeURIComponent("Meme should be a picture"));
         }
 
         const drive = deta.Drive('memes');
@@ -51,10 +48,7 @@ const handler = async (
             contentType: meme.type as string
         });
 
-        return res.status(200).json({
-            type: 'SUCCESS',
-            message: 'Your meme has been uploaded successfully'
-        });
+        return res.redirect('/dashboard?type=error&message=' + encodeURIComponent("Meme submitted successfully"));
     })
 }
 
