@@ -73,7 +73,7 @@ const Dashboard = ({ user }: DashboardProps) => {
                                             </div>
                                         </div>
                                         <div className="card-footer">
-                                            <a href="https://firebasestorage.googleapis.com/v0/b/zepplin21-fa4fd.appspot.com/o/meme.jpg?alt=media&token=a73cc9ca-ae9c-463e-90db-51ac17b6e918" className="card-footer-item" target="_blank">Read Rules ↗</a>
+                                            <a href="https://firebasestorage.googleapis.com/v0/b/zepplin21-fa4fd.appspot.com/o/meme.jpg?alt=media&token=a73cc9ca-ae9c-463e-90db-51ac17b6e918" className="card-footer-item">Read Rules ↗</a>
                                         </div>
                                     </div>
                                 </div>
@@ -88,7 +88,7 @@ const Dashboard = ({ user }: DashboardProps) => {
                                             </div>
                                         </div>
                                         <div className="card-footer">
-                                            <a href="" className="card-footer-item" target="_blank">Instagram ↗</a>
+                                            <a href="" className="card-footer-item">Instagram ↗</a>
                                         </div>
                                     </div>
                                 </div>
@@ -103,7 +103,7 @@ const Dashboard = ({ user }: DashboardProps) => {
                                             </div>
                                         </div>
                                         <div className="card-footer">
-                                            <a href="https://discord.gg/fH6fuJ5WWk" className="card-footer-item" target="_blank">Discord ↗</a>
+                                            <a href="https://discord.gg/fH6fuJ5WWk" className="card-footer-item">Discord ↗</a>
                                         </div>
                                     </div>
                                 </div>
@@ -112,6 +112,17 @@ const Dashboard = ({ user }: DashboardProps) => {
                     </section>
                 </div>
             </div>
+            <footer className="footer">
+                <div className="content has-text-centered">
+                    <p>
+                        Website Built by <a href="https://alphaman.me/">Karan Sanjeev Nair</a>, 3rd year CSE.
+                    </p>
+                    <p>
+                        Source code of this website is available at &nbsp;
+                        <a href="https://github.com/smartclash/zepplin-meme-dashboard">Github</a>
+                    </p>
+                </div>
+            </footer>
         </div>
     )
 }
