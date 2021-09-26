@@ -2,7 +2,6 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import formidable, { File } from 'formidable'
 import { getSession } from 'next-auth/react'
 import deta from '../../../components/deta'
-import { redirect } from 'next/dist/server/api-utils'
 
 type Data = {
   type: 'SUCCESS' | 'ERROR'
@@ -41,6 +40,10 @@ const handler = async (
             completed: true,
             instagram: igHandle
         }, session?.user?.email as string);
+
+        if (!meme.type?.startsWith('image')) {
+            return res.redirect('/dashboard');
+        }
 
         const drive = deta.Drive('memes');
         await drive.put(session?.user?.email as string, {
