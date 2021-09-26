@@ -1,22 +1,18 @@
 import type { GetServerSideProps } from 'next';
-import { FormEvent, useRef, useState } from 'react';
+import { useState } from 'react';
 import { signOut, getSession } from 'next-auth/react';
 import deta, { User } from '../components/deta';
 import Meta from '../components/Meta';
 import Navbar from '../components/Navbar';
+import { GetResponse } from 'deta/dist/types/types/drive/response';
 
 interface DashboardProps {
-    user: User
+    user: User,
+    meme: GetResponse
 }
 
 const MemeForm = () => {
-    const [handle, setHandle] = useState("");
     const [file, setFile] = useState<File>();
-
-    const handleFormSubmission = (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        console.log(handle, file?.name, file?.type);
-    }
 
     return (
         <section className="section">
@@ -28,20 +24,21 @@ const MemeForm = () => {
                         </p>
                     </div>
                     <div className="card-content">
-                        <form onSubmit={handleFormSubmission}>
+                        <form action="http://localhost:3000/api/meme/upload" method="POST" encType="multipart/form-data">
                             <div className="field">
                                 <label htmlFor="ighandle" className="label">Your IG handle</label>
                                 <div className="control">
                                     <input 
                                         type="text" className="input" name="ighandle" 
-                                        id="ighandle" placeholder="@myInstaHandle" required 
-                                        onChange={e => setHandle(e.target.value)} />
+                                        id="ighandle" placeholder="@myInstaHandle" required />
                                 </div>
                             </div>
                             <div className="field">
-                                <label htmlFor="meme" className="button is-outlined is-fullwidth">Select your Meme</label>
+                                <label htmlFor="meme" className="button is-outlined is-fullwidth">
+                                    {file ? 'Selected ' + file.name : 'Select your Meme'}
+                                </label>
                                 <div className="control">
-                                    <input 
+                                    <input
                                         type="file" name="meme" id="meme" required
                                         className="button is-primary is-outlined is-sr-only" 
                                         onChange={e => {
