@@ -12,7 +12,7 @@ const SubmitedMeme = () => {
                     </div>
                     <div className="card-image">
                         <figure className="image is-3by2">
-                            <Image src="/api/meme/get" layout="fill" />
+                            <Image src="/api/meme/get" layout="fill" alt="The meme submitted by you" />
                         </figure>
                     </div>
                 </div>
