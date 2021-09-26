@@ -13,7 +13,7 @@ const MemeForm = () => {
                         </p>
                     </div>
                     <div className="card-content">
-                        <form action="http://localhost:3000/api/meme/upload" method="POST" encType="multipart/form-data">
+                        <form action="/api/meme/upload" method="POST" encType="multipart/form-data">
                             <div className="field">
                                 <label htmlFor="ighandle" className="label">Your IG handle</label>
                                 <div className="control">
