@@ -10,7 +10,7 @@ const Navbar = () => {
                 <div className="navbar-brand">
                     <Link href="/">
                         <a className="navbar-item is-size-4 has-text-weight-medium">
-                            Zeppline Meme
+                            Zepplin Meme
                         </a>
                     </Link>
                 </div>
