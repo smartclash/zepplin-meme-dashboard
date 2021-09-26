@@ -19,7 +19,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const meme = await drive.get(session.user?.email as string);
 
     res.setHeader('Content-Type', meme?.type as string);
-    return res.send(meme?.stream());
+    return res.status(200).send(meme?.stream());
 }
 
 export default handler;
