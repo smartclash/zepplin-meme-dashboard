@@ -6,6 +6,7 @@ import Navbar from '../components/Navbar';
 import { GetResponse } from 'deta/dist/types/types/drive/response';
 import MemeForm from '../components/MemeForm';
 import SubmitedMeme from '../components/SubmitedMeme';
+import InfoBoard from '../components/InfoBoard';
 
 interface DashboardProps {
     user: User,
@@ -28,6 +29,7 @@ const Dashboard = ({ user }: DashboardProps) => {
                         </div>
                     </section>
                     {user.completed ? <SubmitedMeme /> : <MemeForm />}
+                    <InfoBoard />
                     <section className="section">
                         <div className="container">
                             <div className="columns">
