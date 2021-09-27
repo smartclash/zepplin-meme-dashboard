@@ -7,6 +7,8 @@ import { GetResponse } from 'deta/dist/types/types/drive/response';
 import MemeForm from '../components/MemeForm';
 import SubmitedMeme from '../components/SubmitedMeme';
 import InfoBoard from '../components/InfoBoard';
+import { useRouter } from 'next/router';
+import Notification from '../components/Notification';
 
 interface DashboardProps {
     user: User,
@@ -28,6 +30,7 @@ const generateUserInformation = (user: User) => {
 }
 
 const Dashboard = ({ user }: DashboardProps) => {
+    const router = useRouter();
     const userInfo = generateUserInformation(user);
 
     return (
@@ -37,6 +40,10 @@ const Dashboard = ({ user }: DashboardProps) => {
 
             <div className="columns">
                 <div className="column is-8 is-offset-2">
+                    {router.query.type && 
+                        <Notification 
+                            type={router.query.type as string}
+                            message={router.query.message as string} />}
                     <section className="section">
                         <div className="container">
                             <div className="card">
@@ -118,7 +125,7 @@ const Dashboard = ({ user }: DashboardProps) => {
                         Website Built by <a href="https://alphaman.me/">Karan Sanjeev Nair</a>, 3rd year CSE.
                     </p>
                     <p>
-                        Source code of this website is available at &nbsp;
+                        Source code of this website is available at&nbsp;
                         <a href="https://github.com/smartclash/zepplin-meme-dashboard">Github</a>
                     </p>
                 </div>
