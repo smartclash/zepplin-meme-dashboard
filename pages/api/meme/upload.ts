@@ -48,7 +48,7 @@ const handler = async (
             contentType: meme.type as string
         });
 
-        return res.redirect('/dashboard?type=error&message=' + encodeURIComponent("Meme submitted successfully"));
+        return res.redirect('/dashboard?type=success&message=' + encodeURIComponent("Meme submitted successfully"));
     })
 }
 
