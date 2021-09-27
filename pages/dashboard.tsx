@@ -102,15 +102,15 @@ const Dashboard = ({ user }: DashboardProps) => {
                                 <div className="column is-4">
                                     <div className="card">
                                         <div className="card-header">
-                                            <p className="card-header-title">Discord</p>
+                                            <p className="card-header-title">WhatsApp</p>
                                         </div>
                                         <div className="card-content">
                                             <div className="content">
-                                                Join Zepplin's Discord server and have fun with fellow participants. Ask questions and get them sorted out too.
+                                                Join Zepplin's WhatsApp group and have fun with fellow participants. Ask questions and get them sorted out too.
                                             </div>
                                         </div>
                                         <div className="card-footer">
-                                            <a href="https://discord.gg/fH6fuJ5WWk" className="card-footer-item">Discord ↗</a>
+                                            <a href="https://chat.whatsapp.com/GYmahaLzrC17K2y2FUXDU2" className="card-footer-item">WhatsApp ↗</a>
                                         </div>
                                     </div>
                                 </div>
