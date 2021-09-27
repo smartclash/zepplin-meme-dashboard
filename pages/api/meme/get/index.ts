@@ -8,15 +8,12 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         return res.status(404).send('');
     }
 
-    const db = deta.Base('users');
-    const user = await db.get(session.user?.email as string);
-
-    if (user && !user.completed) {
-        return res.status(404).send('');
-    }
-
     const drive = deta.Drive('memes');
     const meme = await drive.get(session.user?.email as string);
+
+    if (!meme) {
+        return res.status(404).send('');
+    }
 
     res.setHeader('Content-Type', meme?.type as string);
     return res.status(200).send(meme?.stream());
