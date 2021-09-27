@@ -1,8 +1,12 @@
 import type { GetServerSideProps, NextPage } from 'next'
 import { signIn, getSession } from 'next-auth/react'
-import Meta from '@/components/Meta';
+import Meta from '@/components/Meta'
+import { useState } from 'react'
+import clsx from 'classnames'
 
 const Home: NextPage = () => {
+    const [clicked, setClicked] = useState<boolean>(false)
+
     return (
         <div>
             <Meta />
@@ -12,7 +16,12 @@ const Home: NextPage = () => {
                     <div className="container">
                         <h1 className="title">Zepplin Meme</h1>
                         <h2 className="subtitle">Login with your official email ID to make submissions</h2>
-                        <a href="#" onClick={() => signIn('google')} className="button is-outlined is-medium is-info is-inverted">Login with Google</a>
+                        <a href="#" onClick={() => {
+                            signIn('google')
+                            setClicked(true)
+                        }} className={clsx('button is-outlined is-medium is-info is-inverted', {
+                            'is-loading': clicked
+                        })}>Login with Google</a>
                     </div>
                 </div>
             </section>
