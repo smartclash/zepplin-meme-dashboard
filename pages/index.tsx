@@ -1,6 +1,6 @@
 import type { GetServerSideProps, NextPage } from 'next'
 import { signIn, getSession } from 'next-auth/react'
-import Meta from '../components/Meta';
+import Meta from '@/components/Meta';
 
 const Home: NextPage = () => {
     return (

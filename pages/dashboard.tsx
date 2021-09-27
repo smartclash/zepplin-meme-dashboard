@@ -1,14 +1,14 @@
 import type { GetServerSideProps } from 'next';
 import { signOut, getSession } from 'next-auth/react';
-import deta, { User } from '../components/deta';
-import Meta from '../components/Meta';
-import Navbar from '../components/Navbar';
+import deta, { User } from '@/components/deta';
+import Meta from '@/components/Meta';
+import Navbar from '@/components/Navbar';
 import { GetResponse } from 'deta/dist/types/types/drive/response';
-import MemeForm from '../components/MemeForm';
-import SubmitedMeme from '../components/SubmitedMeme';
-import InfoBoard from '../components/InfoBoard';
+import MemeForm from '@/components/MemeForm';
+import SubmitedMeme from '@/components/SubmitedMeme';
+import InfoBoard from '@/components/InfoBoard';
 import { useRouter } from 'next/router';
-import Notification from '../components/Notification';
+import Notification from '@/components/Notification';
 
 interface DashboardProps {
     user: User,

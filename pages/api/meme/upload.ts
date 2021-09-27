@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import formidable, { File } from 'formidable'
 import { getSession } from 'next-auth/react'
-import deta from '../../../components/deta'
+import deta from '@/components/deta'
 
 type Data = {
   type: 'SUCCESS' | 'ERROR'
