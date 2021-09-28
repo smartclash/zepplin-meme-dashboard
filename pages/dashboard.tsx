@@ -86,7 +86,7 @@ const Dashboard = ({ user }: DashboardProps) => {
                                             </div>
                                         </div>
                                         <div className="card-footer">
-                                            <a href="" className="card-footer-item">Instagram ↗</a>
+                                            <a href="https://www.instagram.com/zepplin_meme/" className="card-footer-item">Instagram ↗</a>
                                         </div>
                                     </div>
                                 </div>
