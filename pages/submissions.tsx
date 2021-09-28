@@ -43,7 +43,7 @@ const MemeSubmissionsTable = ({ data }: MemeSubmissionsTableParams) => {
                                 <td>{submission.key}</td>
                                 <td>{submission.instagram}</td>
                                 <td>
-                                    <a href={'/api/meme/get/' + encodeURI(submission.key)}>View</a>
+                                    <a href={'/api/meme/get/' + encodeURI(submission.key) + '.jpg'}>View</a>
                                 </td>
                             </tr>
                         ))}

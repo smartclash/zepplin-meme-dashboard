@@ -2,7 +2,8 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import deta from "@/components/deta";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-    const email = req.query.email as string;
+    const theQuery = req.query.email as string;
+    const email = theQuery.split('.jpg')[0];
 
     const drive = deta.Drive('memes');
     const meme = await drive.get(email as string);
