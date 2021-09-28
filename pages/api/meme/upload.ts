@@ -2,12 +2,21 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import formidable, { File } from 'formidable'
 import { getSession } from 'next-auth/react'
 import deta from '@/components/deta'
+import dayjs from 'dayjs'
+import utc from 'dayjs/plugin/utc'
+import timezone from 'dayjs/plugin/timezone'
+import isSameOrBefore from 'dayjs/plugin/isSameOrBefore'
 
 type Data = {
   type: 'SUCCESS' | 'ERROR'
   message: string
   data?: any
 }
+
+dayjs.extend(utc)
+dayjs.extend(timezone)
+dayjs.extend(isSameOrBefore)
+dayjs.tz.setDefault('Asia/Kolkata')
 
 const handler = async (
   req: NextApiRequest,

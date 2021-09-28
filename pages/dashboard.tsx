@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import type { GetServerSideProps } from 'next';
 import { signOut, getSession } from 'next-auth/react';
 import deta, { User } from '@/components/deta';
@@ -9,24 +10,11 @@ import SubmitedMeme from '@/components/SubmitedMeme';
 import InfoBoard from '@/components/InfoBoard';
 import { useRouter } from 'next/router';
 import Notification from '@/components/Notification';
+import { generateUserInformation } from '@/components/common/generateUserInformation';
 
 interface DashboardProps {
     user: User,
     meme: GetResponse
-}
-
-const generateUserInformation = (user: User) => {
-    const emailPrefix = user.key.split('@')[0];
-    const year = emailPrefix.substring(0, 2);
-    const course = emailPrefix.match(/([a-z])+/g) || '';
-    const roll = emailPrefix.split(course[0])[1];
-
-    return {
-        roll,
-        year,
-        course: course[0],
-        prefix: emailPrefix
-    }
 }
 
 const Dashboard = ({ user }: DashboardProps) => {
@@ -60,6 +48,9 @@ const Dashboard = ({ user }: DashboardProps) => {
                                 </div>
                                 <div className="card-footer">
                                     <a onClick={() => signOut()} className="card-footer-item">Logout</a>
+                                    <Link href="/submissions">
+                                        <a className="card-footer-item">Submissions</a>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
