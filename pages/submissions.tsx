@@ -31,22 +31,30 @@ const MemeSubmissionsTable = ({ data }: MemeSubmissionsTableParams) => {
                     <thead>
                         <tr>
                             <th>Name</th>
+                            <th>Department</th>
+                            <th>Year</th>
                             <th>Email</th>
                             <th>Instagram</th>
                             <th>Meme</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {filteredData.map((submission, key) => (
-                            <tr key={key}>
-                                <td>{submission.name}</td>
-                                <td>{submission.key}</td>
-                                <td>{submission.instagram}</td>
-                                <td>
-                                    <a href={'/api/meme/get/' + encodeURI(submission.key) + '.jpg'}>View</a>
-                                </td>
-                            </tr>
-                        ))}
+                        {filteredData.map((submission, key) => {
+                            const info = generateUserInformation(submission)
+
+                            return (
+                                <tr key={key}>
+                                    <td>{submission.name}</td>
+                                    <td>{info.course.toUpperCase()}</td>
+                                    <td>{'20' + info.year}</td>
+                                    <td>{submission.key}</td>
+                                    <td>{submission.instagram}</td>
+                                    <td>
+                                        <a href={'/api/meme/get/' + encodeURI(submission.key) + '.jpg'}>View</a>
+                                    </td>
+                                </tr>
+                            )
+                        })}
                     </tbody>
                 </table>
             </div>
